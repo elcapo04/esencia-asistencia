@@ -34,7 +34,7 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(path = "/report")
 public class ReportController {
@@ -48,45 +48,45 @@ public class ReportController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Entity>> getAttendanceReport(){
 
-        String jrxmlFileName = "C:/reports/Leaf_Grey.jrxml";
-        String jasperFileName = "C:/reports/Leaf_Grey.jasper";
-        String pdfFileName = "C:/reports/C1_report.pdf";
-        try {
-            JasperCompileManager.compileReportToFile(jrxmlFileName, jasperFileName);
-        } catch (JRException e) {
-            e.printStackTrace();
-        }
-
-
-        // Load the JDBC driver
-        try {
-            Class.forName("org.postgresql.Driver");
-            String url = "jdbc:postgresql://localhost:5433/esenciadb?user=postgres&password=intel1234";
-            Connection conn = DriverManager.getConnection(url);
-
-
-
-
-        // Create arguments
-        // Map params = new HashMap()
-        HashMap hm = new HashMap();
-        hm.put("ID", "123");
-        hm.put("DATENAME", "April 2006");
-
-        // Generate jasper print
-        JasperPrint jprint = (JasperPrint) JasperFillManager.fillReport(jasperFileName, hm, conn);
-
-        // Export pdf file
-        JasperExportManager.exportReportToPdfFile(jprint, pdfFileName);
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (JRException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+//        String jrxmlFileName = "C:/reports/Leaf_Grey.jrxml";
+//        String jasperFileName = "C:/reports/Leaf_Grey.jasper";
+//        String pdfFileName = "C:/reports/C1_report.pdf";
+//        try {
+//            JasperCompileManager.compileReportToFile(jrxmlFileName, jasperFileName);
+//        } catch (JRException e) {
+//            e.printStackTrace();
+//        }
+//
+//
+//        // Load the JDBC driver
+//        try {
+//            Class.forName("org.postgresql.Driver");
+//            String url = "jdbc:postgresql://localhost:5433/esenciadb?user=postgres&password=intel1234";
+//            Connection conn = DriverManager.getConnection(url);
+//
+//
+//
+//
+//        // Create arguments
+//        // Map params = new HashMap()
+//        HashMap hm = new HashMap();
+//        hm.put("ID", "123");
+//        hm.put("DATENAME", "April 2006");
+//
+//        // Generate jasper print
+//        JasperPrint jprint = (JasperPrint) JasperFillManager.fillReport(jasperFileName, hm, conn);
+//
+//        // Export pdf file
+//        JasperExportManager.exportReportToPdfFile(jprint, pdfFileName);
+//
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        } catch (JRException e) {
+//            e.printStackTrace();
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
 
         entityList.add(new Entity(false, 1, "Test 1"));
         Todo todo = new Todo(entityList);
